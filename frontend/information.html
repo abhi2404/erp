@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style> 
+table,th,td {
+	border:1px solid black;
+}
+</style>
+</head>
+<body>
+	<table>
+		<th>ID</th>
+		<th>Name</th>
+		<th>Lib Id</th>
+		<th>Couse</th>
+		<th>Mobile no</th>
+		<th>Branch </th>
+		<th>Sec </th>
+
+		<tbody id='tbody'></tbody>
+	</table>
+
+	
+<script>
+	var xhr= new XMLHttpRequest();
+	var url ="http://127.0.0.1:8000/details/information/";
+	xhr.onreadystatechange= function()
+	{
+		if (this.readyState == 4 && this.status ==200){
+			var arr = JSON.parse(this.responseText);
+			myfunction(arr);
+		}
+	}
+	xhr.open("GET",url,true);
+	xhr.send();
+
+    
+    function myfunction(arr){
+    	var i;
+    	var k= '<tbody>'
+    	for(i=0;i<arr.length;i++){
+    		k+='<tr>';
+    		k +='<td>'+arr[i].id+'</td>';
+    		k +='<td>'+arr[i].name+'</td>';
+    		k +='<td>'+arr[i].lib_id+'</td>';
+    		k +='<td>'+arr[i].course+'</td>'; 
+
+    		
+    		k +='<td>'+arr[i].mobile_no+'</td>';
+    	    k +='<td>'+arr[i].branch+'</td>'
+    		k +='<td>'+arr[i].sec+'</td>';
+    		k +='<tr>';
+    	}
+    	k+='<tbody';
+    	document.getElementById('tbody').innerHTML = k;
+    }
+</script>
+<form action='update.html'>
+	<input type="submit" value="UPDATE DETAILS">
+</form>
+<form action="delete.html">
+	<input type="submit" value="DELETE DETAILS">
+</form>
+</body>
+</html>
