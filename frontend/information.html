@@ -16,8 +16,19 @@ table,th,td {
 		<th>Mobile no</th>
 		<th>Branch </th>
 		<th>Sec </th>
+		<th>UPDATE</th>
+		<th>DELETE</th>
 
 		<tbody id='tbody'></tbody>
+	</table>
+	<table>
+		<th>QUERY ID</th>
+		 <th>Lib_id</th>
+            <th>Query</th>
+            <th>Date of	Query</th>
+            <th> Status</th>
+            <th>APPROVAL</th>
+		<tbody id='status'></tbody>
 	</table>
 
 	
@@ -36,30 +47,32 @@ table,th,td {
 
     
     function myfunction(arr){
+
+
+
+
     	var i;
-    	var k= '<tbody>'
+    	var k= '<tbody>';
     	for(i=0;i<arr.length;i++){
     		k+='<tr>';
     		k +='<td>'+arr[i].id+'</td>';
     		k +='<td>'+arr[i].name+'</td>';
     		k +='<td>'+arr[i].lib_id+'</td>';
     		k +='<td>'+arr[i].course+'</td>'; 
-
-    		
     		k +='<td>'+arr[i].mobile_no+'</td>';
-    	    k +='<td>'+arr[i].branch+'</td>'
+    	    k +='<td>'+arr[i].branch+'</td>';
     		k +='<td>'+arr[i].sec+'</td>';
+    		k +='<td>'+'<form action="update.html">'+'<input type="submit" value="update">'+'</form>' +'</td>';
+    		k +='<td>'+'<form action="delete.html">'+'<input type="submit" value="delete">'+'</form>' +'</td>';  
     		k +='<tr>';
     	}
     	k+='<tbody';
     	document.getElementById('tbody').innerHTML = k;
     }
 </script>
-<form action='update.html'>
-	<input type="submit" value="UPDATE DETAILS">
+<form>
+	<button type="button" onclick="STATUS()">GET_QUERY_STATUS</button>     
+	<p class="result"></p>
 </form>
-<form action="delete.html">
-	<input type="submit" value="DELETE DETAILS">
-</form>
+<script src="index.js"></script>
 </body>
-</html>
